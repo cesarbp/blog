@@ -1,0 +1,10 @@
+(ns blog.views.blog
+  (:use noir.core
+        blog.views.common))
+
+(defpage "/blog/" []
+  (let [content {:content [:h1 "Hello!"]
+                 :active "Blog"
+                 :title "Blog"}]
+    (base-layout content)))
+
