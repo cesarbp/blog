@@ -1,3 +1,23 @@
 body {
     background-image: url("/images/debut_light.png");
 }
+
+.post-details-header {
+    background-image: url("/images/diagonales_decalees.png");
+    text-align: right;
+}
+.post-options-footer {
+    background-image: url("/images/diagonales_decalees.png");
+    border-bottom-color: black;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    text-align: right;
+}
+
+.row .post-options-footer {
+    margin-bottom: 12px;
+}
+
+.post-content {
+    background-image: url("/images/linedpaper.png");
+}
