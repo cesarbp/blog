@@ -19,7 +19,7 @@
    (map res-includes incls)])
 
 (defpartial nav-bar [active]
-  (let [nav-links [["Empresa" "/empresa/"] ["Blog" "/blog/"] ["Contacto" "/contacto/"] ["Nuevo" "/posts/nuevo/"]]]
+  (let [nav-links [["Empresa" "/empresa/"] ["Blog" "/blog/"] ["Contacto" "/contacto/"] ["Nuevo" "/posts/nuevo/"] ["Reset" "/reset/"]]]
     [:nav.top-bar
      [:ul
       [:li.name

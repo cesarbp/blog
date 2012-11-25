@@ -21,3 +21,29 @@ body {
 .post-content {
     background-image: url("/images/linedpaper.png");
 }
+
+.comment-details {
+    background-image: url("/images/diagonales_decalees.png");
+}
+.comment-content {
+    background-image: url("/images/linedpaper.png");
+}
+.comment-controls {
+    background-image: url("/images/diagonales_decalees.png");
+}
+.comment-date {
+    text-align: right;
+}
+.row .comment-section {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+.row .comment-controls {
+    text-align: right;
+}
+
+.row .new-comment-divider {
+    margin-top:12px;
+    margin-bottom:12px;
+}

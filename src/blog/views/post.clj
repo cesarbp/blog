@@ -9,10 +9,10 @@
 (defpartial new-post-form []
   (form-to [:post "/posts/nuevo/"]
     [:div.row
-     [:div.twelve-columns
+     [:div.twelve.columns
       [:p "La primera linea del post es el titulo"]]]
     [:div.row
-     [:div.twelve-columns
+     [:div.twelve.columns
       [:textarea {:name :content :placeholder "Contenido" :style "height:640px;"}]]]
     [:div.row
      [:div.four.colums.offset-by-eight

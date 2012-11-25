@@ -19,8 +19,10 @@
       (mongo! :db (:db config) :host (:host config) :port (Integer. (:port config)))
       (authenticate (:user config) (:pass config)))))
 
+;;; Does not keep the unmodified values
 (defn modify-db-map [new old olds-key]
   (conj new {olds-key (conj (olds-key old) (dissoc old olds-key))}))
+;;; Keeps the unmodified values and leaves them the same
 (defn update-db-map [mod old olds-key]
   (conj old mod {olds-key (conj (olds-key old) (dissoc old olds-key))}))
 

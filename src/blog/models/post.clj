@@ -19,6 +19,10 @@
 (defn get-by [cond-map]
   (fetch-one post-coll :where cond-map))
 
+(defn get-by-name [name]
+  (let [r (re-pattern (str "(?i)^" name "$"))]
+    (fetch-one post-coll :where {:normalized-title r})))
+
 (defn get-latest []
   (fetch post-coll :limit front-page-post-count :sort {:date -1}))
 
