@@ -7,15 +7,15 @@
 (def res-includes
   {:base-css (include-css "/stylesheets/foundation.min.css")
    :base-js  (include-js "/javascripts/foundation.min.js")
-   :custom-css (include-css "/stylesheets/custom.css")}
-  )
+   :custom-css (include-css "/stylesheets/custom.css")
+   :museo-css (include-css "/stylesheets/museo.css")})
 
 ;;; incls is a sequence of keys that are in res-includes
 (defpartial head [incls title]
   [:head
    [:meta {:charset "UTF-8"}]
-   [:title (if (seq title) (str title " | BolPor Software")
-               ("BolPor Software"))]
+   [:title (if (seq title) (str title " | SYSC")
+               "SYSC")]
    (map res-includes incls)])
 
 (defpartial nav-bar [active]
@@ -24,7 +24,7 @@
      [:ul
       [:li.name
        [:h1
-        (link-to "/" "BolPor Software")]]]
+        (link-to "/" "SYSC")]]]
      [:section
       [:ul.right
        (interpose [:li.divider]
@@ -43,7 +43,7 @@
 (defpartial base-layout [content-map]
   (let [messages (flash-get :messages)]
     (html5
-     (head [:base-css :base-js :custom-css] (:title content-map))
+     (head [:base-css :base-js :museo-css :custom-css] (:title content-map))
      [:body
       (nav-bar (:active content-map))
       (when messages
