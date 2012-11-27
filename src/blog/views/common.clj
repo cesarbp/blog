@@ -14,8 +14,8 @@
 (defpartial head [incls title]
   [:head
    [:meta {:charset "UTF-8"}]
-   [:title (if (seq title) (str title " | SYSC")
-               "SYSC")]
+   [:title (if (seq title) (str title " | BolPor Software")
+               "BolPor Software")]
    (map res-includes incls)])
 
 (defpartial nav-bar [active]
@@ -24,7 +24,7 @@
      [:ul
       [:li.name
        [:h1
-        (link-to "/" "SYSC")]]]
+        (link-to "/" "BolPor Software")]]]
      [:section
       [:ul.right
        (interpose [:li.divider]
