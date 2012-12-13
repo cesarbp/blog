@@ -6,6 +6,13 @@
 
 (def users-coll :users)
 
+(defn admin? []
+  (session/get :admin))
+
+(defn theres-admin? []
+  (and (collection-exists? users-coll)
+       (fetch-one users-coll :where {:user "admin"})))
+
 (defn setup! [admin-pass]
   (when (collection-exists? users-coll)
     (drop-coll! users-coll))

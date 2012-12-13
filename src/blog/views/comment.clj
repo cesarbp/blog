@@ -53,11 +53,11 @@
 (defpartial main-section [post comments]
   [:section.main
    [:div.row
-    [:div.twelve.columns (blog-post (:content post) (:date post) "")
-     (comment-divider)
-     (show-comments comments)
-     (new-comment-divider)
-     (new-comment-form (str (:_id post)) (:normalized-title post))]]])
+    (blog-post (:content post) (:date post) "")
+    (comment-divider)
+    (show-comments comments)
+    (new-comment-divider)
+    (new-comment-form (str (:_id post)) (:normalized-title post))]])
 
 (defpage "/blog/posts/:title/comentarios/" {:keys [title]}
   (let [post (posts/get-by-name title)

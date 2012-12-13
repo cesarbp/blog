@@ -2,22 +2,15 @@
   (:use somnium.congomongo
         [somnium.congomongo.config :only [*mongo-config*]]))
 
-
-(defn split-mongo-url [url]
-  "Parses mongodb url from heroku, like mongodb://user:pass@localhost:1234/db"
-  (let [matcher (re-matcher #"^.*://(.*?):(.*?)@(.*?):(\d+)/(.*)$" url)] ;; Setup the regex.
-    (when (.find matcher) ;; Check if it matches.
-      (zipmap [:match :user :pass :host :port :db] (re-groups matcher)))))
+(def access-fpath "access.clj")
 
 (defn maybe-init! []
   "Checks if connection and collection exist, otherwise initialize."
   (when (not (connection? *mongo-config*))
-    (let [mongo-url (or (get (System/getenv) "MONGOHQ_URL") ;; Heroku location
-                        "mongodb://admincesarbp:thisaintaverysecurewebsitejimmy@localhost:27017/blog") ;; Local db
-          config (split-mongo-url mongo-url)]
-      (println "Initializing mongo @ " mongo-url)
-      (mongo! :db (:db config) :host (:host config) :port (Integer. (:port config)))
-      (authenticate (:user config) (:pass config)))))
+    (let [{:keys [host user password port db]} (read-string (slurp access-fpath))]
+      (println "Initializing mongo")
+      (mongo! :db db :host host :port (Integer. port))
+      (authenticate user password))))
 
 ;;; Does not keep the unmodified values
 (defn modify-db-map [new old olds-key]
@@ -31,11 +24,17 @@
   (try (object-id id)
        (catch IllegalArgumentException e
          nil)))
+
+(defn remove-invalid-url-chars [s]
+  (-> s
+      (clojure.string/replace #"[^A-Za-z0-9-._~]+" "_")
+      (clojure.string/replace #"_$" "")))
+
 ;;; Removes accents and other special chars from a string and replaces whitespace with
 ;;; underscores.
 (defn normalize [str]
   (-> str
       (java.text.Normalizer/normalize java.text.Normalizer$Form/NFKD)
       (clojure.string/replace #"\p{InCombiningDiacriticalMarks}" "")
-      (clojure.string/replace #"\s+" "_")))
+      (remove-invalid-url-chars)))
 

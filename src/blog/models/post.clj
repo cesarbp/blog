@@ -33,6 +33,8 @@
       (let [now (t/now)
             title (if (seq title) title (first (clojure.string/split content #"(\r|\n)+")))
             normalized-title (normalize title)]
+        (when (fetch-one post-coll :where {:normalized-title normalized-title})
+          nil)
         (insert! post-coll {:date now :normalized-title normalized-title
                             :content content :title title :edits []})
         :success)))

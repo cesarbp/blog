@@ -22,8 +22,7 @@
 (defpartial contact-info []
   [:div.row
    [:h3 "¿Cómo contactarnos?"]
-   [:p "Envíe un correo a " (mail-to "syscsoftware@gmail.com") " o llámenos al teléfono (722) 123 4567"]
-   [:p "Dirección: Calle uno # 11, Colonia Santo Irineo, Toluca, Estado de México."]])
+   [:p "Envíe un correo a " (mail-to "cesar@bolpor.com")]])
 
 (defpartial main-section []
   [:section.main

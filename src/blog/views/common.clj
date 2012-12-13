@@ -33,12 +33,13 @@
                        nav-links))]]]))
 
 (defpartial display-messages [messages]
-  (map (fn [msg]
-         (let [type (:type msg)
-               alert-class (when-not (= type :standard) (name type))]
-           [:div {:class (str "alert-box" (when alert-class " ") alert-class)}
-            (:content msg)]))
-       messages))
+  [:div.row
+   (map (fn [msg]
+          (let [type (:type msg)
+                alert-class (when-not (= type :standard) (name type))]
+            [:div {:class (str "alert-box" (when alert-class " ") alert-class)}
+             (:content msg)]))
+        messages)])
 
 (defpartial base-layout [content-map]
   (let [messages (flash-get :messages)]
