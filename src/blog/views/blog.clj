@@ -23,10 +23,11 @@
 (defpartial main-section [posts]
   [:section.main
    [:div.row
-    (map blog-post (map :content posts) (map :date posts)
-         (map (fn [post]
-                (str "/blog/posts/" (:normalized-title post) "/comments/"))
-              posts))]])
+    [:div.twelve.columns
+     (map blog-post (map :content posts) (map :date posts)
+          (map (fn [post]
+                 (str "/blog/posts/" (:normalized-title post) "/comments/"))
+               posts))]]])
 
 (defpage "/blog/" []
   (let [latest-posts (posts/get-latest)
