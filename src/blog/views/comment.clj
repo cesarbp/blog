@@ -46,9 +46,9 @@
             [:div.row.new-comment-container
              (label :user "Your name")
              (text-field :user)
-             (label :user "Your email")
+             (label :user "Your email (it won't be made public)")
              (text-field :email)
-             [:textarea {:name :content :placeholder "Content"}]
+             [:textarea {:class "add-comment-content" :name :content :placeholder "Content"}]
              (hidden-field :normalized normalized-title)]
             [:div.row.new-comment-actions
              (submit-button {:class "button"} "Add")]]))

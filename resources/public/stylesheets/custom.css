@@ -51,45 +51,6 @@ body {
 .company-header {
     text-align: center;
 }
-.services-list {
-    text-align: center;
-}
-
-.product-item {
-    height: 200px;
-    text-align:center;
-    width: 200px;
-    margin-left:45px;
-    float: left;
-    border: 1px solid #e8e8e8;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-box-shadow: 0 0 5px #efefef;
-    -moz-box-shadow: 0 0 5px #efefef;
-    box-shadow: 0 0 5px #efefef;
-    padding: 20px 10px 10px;
-    text-decoration: none;
-    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
-    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#efefef));
-    background: -moz-linear-gradient(top,  #fff,  #efefef);
-}
-
-.product-item h3 {
-    margin: 5px 0 10px;
-    font-size: 14px;
-    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
-    color: #cc0000;
-}
-
-.product-item p {
-    color: #222;
-    font-size: 14px;
-    line-height: 1.4em;
-    margin-top: 5px;
-    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
-}
-
 .email-message {
     height: 120px;
 }
@@ -108,4 +69,7 @@ p, li {
 
 h1 {
     font-family: 'Droid Serif', serif;
+}
+.add-comment-content {
+    height: 120px;
 }
