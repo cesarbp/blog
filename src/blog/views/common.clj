@@ -8,6 +8,7 @@
 (def res-includes
   {:base-css (include-css "/stylesheets/foundation.min.css")
    :base-js  (include-js "/javascripts/foundation.min.js")
+   :app-js (include-js "/javascripts/app.js")
    :custom-css (include-css "/stylesheets/custom.css")
    :museo-css (include-css "/stylesheets/museo.css")
    :crimson-css (include-css "http://fonts.googleapis.com/css?family=Crimson+Text")
@@ -29,7 +30,9 @@
    [:ul
     [:li.name
      [:h1
-      (link-to "/" "BolPor Software")]]]
+      (link-to "/" "BolPor Software")]]
+    [:li.toggle-topbar
+     (link-to "#" "")]]
    [:section
     [:ul.right
      (interpose [:li.divider]
@@ -49,9 +52,12 @@
 (defpartial base-layout [content-map]
   (let [messages (flash-get :messages)]
     (html5
-     (head [:base-css :base-js :droidserif-css :crimson-css :custom-css] (:title content-map))
-     [:body
+     (head [:base-css :droidserif-css :crimson-css :custom-css] (:title content-map))
+     [:body.off-canvas
       (nav-bar (:active content-map) (if (users/admin?) nav-links-admin nav-links))
       (when messages
         (display-messages messages))
-      (:content content-map)])))
+      (:content content-map)
+      [:footer
+       (res-includes :base-js)
+       (res-includes :app-js)]])))
