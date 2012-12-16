@@ -6,11 +6,10 @@
 
 (defn deny-access [redirect-url]
   (when-not (users/admin?)
-    (flash-message "No tiene permisos para entrar a esta página" :alert)
+    (flash-message "You can't access this page." :alert)
     (resp/redirect redirect-url)))
 
-;; (pre-route "/admin/*" []
-;;            (deny-access "/"))
-
+(pre-route "/admin/*" []
+           (deny-access "/company/"))
 (pre-route "/posts/nuevo/*" []
-           (deny-access "/blog/"))
+           (deny-access "/company/"))

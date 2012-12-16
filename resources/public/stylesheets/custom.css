@@ -101,3 +101,11 @@ body {
 .feature-image img {
     max-height:420px;
 }
+
+p, h2, h3, li {
+    font-family: 'Crimson Text', serif;
+}
+
+h1 {
+    font-family: 'Droid Serif', serif;
+}

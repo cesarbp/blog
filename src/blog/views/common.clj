@@ -2,13 +2,16 @@
   (:use [noir.core :only [defpartial]]
         [hiccup.page :only [include-css include-js html5]]
         [hiccup.element :only [link-to]]
-        [noir.session :only [flash-get]]))
+        [noir.session :only [flash-get]])
+  (:require [blog.models.user :as users]))
 
 (def res-includes
   {:base-css (include-css "/stylesheets/foundation.min.css")
    :base-js  (include-js "/javascripts/foundation.min.js")
    :custom-css (include-css "/stylesheets/custom.css")
-   :museo-css (include-css "/stylesheets/museo.css")})
+   :museo-css (include-css "/stylesheets/museo.css")
+   :crimson-css (include-css "http://fonts.googleapis.com/css?family=Crimson+Text")
+   :droidserif-css (include-css "http://fonts.googleapis.com/css?family=Droid+Serif")})
 
 ;;; incls is a sequence of keys that are in res-includes
 (defpartial head [incls title]
@@ -18,19 +21,21 @@
                "BolPor Software")]
    (map res-includes incls)])
 
-(defpartial nav-bar [active]
-  (let [nav-links [["Empresa" "/empresa/"] ["Blog" "/blog/"] ["Contacto" "/contacto/"] ["Nuevo" "/posts/nuevo/"] ["Reset" "/reset/"]]]
-    [:nav.top-bar
-     [:ul
-      [:li.name
-       [:h1
-        (link-to "/" "BolPor Software")]]]
-     [:section
-      [:ul.right
-       (interpose [:li.divider]
-                  (map (fn [[title lnk]]
-                         [(if (and (string? active) (= title active)) :li.active :li) (link-to lnk title)])
-                       nav-links))]]]))
+(def nav-links [["Company" "/company/"] ["Blog" "/blog/"] ["Contact" "/contact/"]])
+(def nav-links-admin [["Company" "/company/"] ["Blog" "/blog/"] ["Contact" "/contact/"] ["New" "/blog/posts/new/"] ["Admin" "/admin/"] ["Logout" "/logout/"]])
+
+(defpartial nav-bar [active nav-links]
+  [:nav.top-bar
+   [:ul
+    [:li.name
+     [:h1
+      (link-to "/" "BolPor Software")]]]
+   [:section
+    [:ul.right
+     (interpose [:li.divider]
+                (map (fn [[title lnk]]
+                       [(if (and (string? active) (= title active)) :li.active :li) (link-to lnk title)])
+                     nav-links))]]])
 
 (defpartial display-messages [messages]
   [:div.row
@@ -44,9 +49,9 @@
 (defpartial base-layout [content-map]
   (let [messages (flash-get :messages)]
     (html5
-     (head [:base-css :base-js :museo-css :custom-css] (:title content-map))
+     (head [:base-css :base-js :droidserif-css :crimson-css :custom-css] (:title content-map))
      [:body
-      (nav-bar (:active content-map))
+      (nav-bar (:active content-map) (if (users/admin?) nav-links-admin nav-links))
       (when messages
         (display-messages messages))
       (:content content-map)])))

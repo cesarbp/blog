@@ -26,3 +26,6 @@
 (defn login! []
   (session/put! :user :admin)
   (session/put! :admin true))
+
+(defn logout! []
+  (session/clear!))

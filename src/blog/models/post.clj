@@ -23,6 +23,9 @@
   (let [r (re-pattern (str "(?i)^" name "$"))]
     (fetch-one post-coll :where {:normalized-title r})))
 
+(defn get-by-id [id]
+  (get-by {:_id (object-id id)}))
+
 (defn get-latest []
   (fetch post-coll :limit front-page-post-count :sort {:date -1}))
 
@@ -33,11 +36,11 @@
       (let [now (t/now)
             title (if (seq title) title (first (clojure.string/split content #"(\r|\n)+")))
             normalized-title (normalize title)]
-        (when (fetch-one post-coll :where {:normalized-title normalized-title})
-          nil)
-        (insert! post-coll {:date now :normalized-title normalized-title
-                            :content content :title title :edits []})
-        :success)))
+        (when-not (fetch-one post-coll :where {:normalized-title normalized-title})
+          
+          (insert! post-coll {:date now :normalized-title normalized-title
+                              :content content :title title :edits []})
+          :success))))
 
 ;;; Change existing posts
 (defn edit-post [id new-content]

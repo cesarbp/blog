@@ -8,11 +8,12 @@
 
 (defpartial contact-form []
   [:div.row
-   [:h3 "Envíanos un mensaje:"]
-   (form-to [:post "/contacto/"]
-            (text-field {:placeholder "Asunto"} :title)
-            [:textarea.email-message {:placeholder "Mensaje" :name :message}]
-            (submit-button {:class "button"} "Enviar mensaje"))])
+   [:h2 "Leave me a message"]
+   (form-to [:post "/contact/"]
+            (text-field {:placeholder "Your email"} :email)
+            (text-field {:placeholder "Subject"} :title)
+            [:textarea.email-message {:placeholder "Message" :name :message}]
+            (submit-button {:class "button"} "Send message"))])
 
 (defpartial row-divider []
   [:div.row
@@ -21,8 +22,8 @@
 
 (defpartial contact-info []
   [:div.row
-   [:h3 "¿Cómo contactarnos?"]
-   [:p "Envíe un correo a " (mail-to "cesar@bolpor.com")]])
+   [:h2 "Or send me an email"]
+   [:p "Send it to " (mail-to "cesar@bolpor.com") " and I will answer it as quickly as I can (time permitting)."]])
 
 (defpartial main-section []
   [:section.main
@@ -30,12 +31,12 @@
    (row-divider)
    (contact-info)])
 
-(defpage "/contacto/" []
+(defpage "/contact/" []
   (let [content {:content (main-section)
-                 :active "Contacto"
-                 :title "Contacto"}]
+                 :active "Contact"
+                 :title "Contact"}]
     (base-layout content)))
 
 (defpage [:post "/contacto/"] []
-  (flash-message "Su mensaje ha sido enviado, le responderemos en unos cuantos minutos." :standard)
+  (flash-message "Your message has been received, we will answer it shortly." :standard)
   (resp/redirect "/empresa/"))

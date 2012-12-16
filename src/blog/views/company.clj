@@ -1,12 +1,12 @@
 (ns blog.views.company
   (:use [noir.core :only [defpage defpartial]]
-        [hiccup.element :only [link-to image]]
+        [hiccup.element :only [link-to mail-to image]]
         [blog.views.common :only [base-layout]]))
 
 
 (defpartial header-part []
   [:div.row.company-header
-   [:h1.Museo-300 "BolPor - Software que genera valor para su negocio."]])
+   [:h1.Museo-300 "BolPor - Software that generates value for your business"]])
 
 (defpartial row-divider []
   [:div.row
@@ -14,20 +14,20 @@
 
 (defpartial products-list []
   [:div.row.products-list
-   [:h2 "Nuestros productos"]
+   [:h2 "Our products"]
    [:div.row.product-row
     [:div.four.columns.product-description
-     [:h3 "Puntos de venta"]
-     [:p "Puntos de venta y sitios de administración para negocios medianos y pequeños"]
-     (link-to "/punto-venta/" "> Ver detalles")]
+     [:h3 "Sales Point"]
+     [:p "Sales points and admin systems for medium and small businesses."]
+     (link-to "/sales-point/" "> View details")]
     [:div.eight.columns
-     (image "/images/sp-pitch.png" "Pantalla del punto de ventas")]]])
+     (image "/images/sp-pitch.png" "Sales point screen")]]])
 
 (defpartial who-part []
   [:div.row.who-part
    [:h3 "BolPor Software"]
-   [:p "Mi nombre es César Bolaños, tengo estudios en ingeniería en sistemas. Me dedico a crear productos de software y a dar servicios de consultoría a pequeñas y medianas empresas. Si alguna de estas cosas te interesa, puedes enviarme un correo a cesar@bolpor.com, respondo a <i>casi</i> todos mis correos conforme me lo permite mi tiempo. Me interesa mucho hacer crecer a tu pequeña o mediana empresa."]
-   [:p "Si no te interesan mis servicios o productos puedes leer mi " (link-to "/blog/" "blog") ", donde hablo hacerca de software, mi empresa, mis proyectos y otras cosas de interés."]])
+   [:p "My name is César Bolaños, I have studies in software engineering. I do software development and consulting for medium and small companies. If you are interested in either of those things, send an email to " (mail-to "cesar@bolpor.com") " and I shall answer you as soon as possible."]
+   [:p "If you aren't interested you can still read my " (link-to "/blog/" "blog") ", where I talk about software, my company, my projects and other things I deem of interest."]])
 
 (defpartial main-section []
   [:section.main
@@ -37,8 +37,8 @@
    (row-divider)
    (who-part)])
 
-(defpage "/empresa/" []
+(defpage "/company/" []
   (let [content {:content (main-section)
-                 :active "Empresa"
-                 :title nil}]
+                 :active "Company"
+                 :title "Company"}]
     (base-layout content)))

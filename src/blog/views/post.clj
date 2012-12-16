@@ -7,24 +7,24 @@
             [noir.response :as resp]))
 
 (defpartial new-post-form []
-  (form-to [:post "/posts/nuevo/"]
+  (form-to [:post "/blog/posts/new/"]
     [:div.row
-     [:p "La primera linea del post es el titulo"]]
+     [:p "The first line is the title."]]
     [:div.row
-     [:textarea {:name :content :placeholder "Contenido" :style "height:640px;"}]]
+     [:textarea {:name :content :placeholder "Content" :style "height:640px;"}]]
     [:div.row
      [:div.four.colums.offset-by-eight
-      (submit-button {:class "button"} "Nuevo Post")]]))
+      (submit-button {:class "button"} "New Post")]]))
 
-(defpage "/posts/nuevo/" []
+(defpage "/blog/posts/new/" []
   (let [content {:content (new-post-form)
-                 :title "Agregando un nuevo post"
-                 :active "Nuevo"}]
+                 :title "Adding a new blog post"
+                 :active "New"}]
     (base-layout content)))
 
-(defpage [:post "/posts/nuevo/"] {:keys [content]}
+(defpage [:post "/blog/posts/new/"] {:keys [content]}
   (let [result (posts/add-post content)]
     (if (= :success result)
-      (flash-message "El post ha sido agregado." :success)
-      (flash-message "El post no ha podido ser agregado." :alert))
+      (flash-message "Post has been added." :success)
+      (flash-message "Post couldn't be added." :alert))
     (resp/redirect "/blog/")))

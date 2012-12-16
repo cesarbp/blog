@@ -10,96 +10,96 @@
 
 (defpartial title []
   [:div.row
-   [:h1 "Punto de ventas y sitio de administración"]
-   [:p "Este programa permite la administración de un negocio pequeño o mediano y tiene la capacidad de funcionar como cajero. Puede funcionar a través de internet o de manera local. Puede funcionar en cualquier computadora que disponga de un navegador de internet<small>1</small>. Y funciona con los dispositivos comunes como lector de código de barras e impresora de matriz de puntos<small>2</small>."]
-   [:p "A continuación puede ver imágenes con descripciones de cada una de las características de este producto."]])
+   [:h1 "Sales point and admin site"]
+   [:p "This system allows for the administration of a small or medium business and has the ability to function as a cashier. It works over the internet or locally. Any computer with a modern web browser can run it. And it supports common devices such as barcode scanners and ticket printers."]
+   [:p "A list of features follows:"]])
 
 (defpartial cashier-feature []
   [:div.row
    [:div.twelve.columns.product-feature
     [:div.four.columns.feature-description
-     [:h2 "Cajero"]
-     [:p "Cuenta con un cajero con todas las características que puede esperar."]
+     [:h2 "Cashier"]
+     [:p "A fully featured cashier, beautiful and simple."]
      [:ul.feature-description-list
-      [:li "Funciona completamente con el teclado y lector de código de barras (aunque el ratón puede ayudar)."]
-      [:li "Interfaz fácil de usar."]
-      [:li "Permite agregar artículos que no se encuentren registrados a la venta."]
-      [:li "Incluye más controles, más intuitivos y atractivos que un punto de ventas común, ya que utiliza todo el poder gráfico que ofrece una página web."]]]
+      [:li "Fully controllable by keyboard and barcode scanner; although a mouse can help."]
+      [:li "Easy to use interface that requires minimal training."]
+      [:li "Permits the adding of miscelaneous articles not found in the database."]
+      [:li "Includes more options, more intuitive and pleasant than a common sales point as it uses the full power of modern web graphical tools."]]]
     [:div.eight.columns.feature-image
-     (image "/images/sp-pitch.png" "Cajero")]]])
+     (image "/images/sp-pitch.png" "Cashier")]]])
 
 (defpartial ticket-feature []
   [:div.row
    [:div.twelve.columns.product-feature
     [:div.four.columns.feature-description
-     [:h2 "Tickets y facturas"]
-     [:p "Impresión de tickets y facturas, que funcionan con dispositivos comunes. Como impresoras de matriz de puntos. Si el dispositivo puede conectarse a su computadora, el sistema lo puede utilizar."]]
+     [:h2 "Tickets & Bills"]
+     [:p "Allows for the printing of either. Works with conventional printers. If the device can be plugged in to your computer, the system can use it."]]
     [:div.eight.columns.feature-image
-     (image "/images/sp-ticket.png" "Ticket de venta")]]])
+     (image "/images/sp-ticket.png" "Ticket")]]])
 
 (defpartial articles-feature []
   [:div.row
    [:div.twelve.columns.product-feature
     [:div.four.columns.feature-description
-     [:h2 "Diseñado para el usuario."]
-     [:p "Consultas y administración de artículos personalizada."]
+     [:h2 "User-centered design"]
+     [:p "Personalized administration of products according to the user's needs."]
      [:ul.feature-description-list
-      [:li "Sistema completo de administración de artículos."]
-      [:li "Opciones personalizadas."]
-      [:li "La información necesaria de la manera más pronta y clara."]]]
+      [:li "Fully featured admin system."]
+      [:li "Personalized options."]
+      [:li "The required information, accessible in the fastest and clearest manner possible."]]]
     [:div.eight.columns.feature-image
-     (image "/images/sp-search.png" "Resultados de una busqueda")]]])
+     (image "/images/sp-search.png" "Search results")]]])
 
 (defpartial dataquality-feature []
   [:div.row
    [:div.twelve.columns.product-feature
     [:div.four.columns.feature-description
-     [:h2 "El sistema trabaja con tu base de datos actual."]
-     [:p "Una fácil transición para tu base de datos."]
+     [:h2 "The system can work with your existing database"]
+     [:p "It provides an easy transition for your working database and grants easy tools for the creation of one in case you don't have one."]
      [:ul.feature-description-list
-      [:li "Herramientas para mantener una buena calidad en los datos."]
-      [:li "Tanto para detectar errores como para corregirlos."]
-      [:li "Criterios personalizados para mantener la base de datos en un buen estado."]]]
+      [:li "Tools for quality control of your data."]
+      [:li "Allows you to detect errors and fix them in an easy way."]
+      [:li "Personalized criteria to keep your database in good shape."]]]
     [:div.eight.columns.feature-image
-     (image "/images/sp-dberrors.png" "Corregir errores de la base de datos")]]])
+     (image "/images/sp-dberrors.png" "Fix database errors")]]])
 
 (defpartial backups-feature []
   [:div.row
    [:div.twelve.columns.product-feature
     [:div.four.columns.feature-description
-     [:h2 "Sistema completo de respaldos."]
-     [:p "Elige dónde y con qué frecuencia se respaldan los datos de tu negocio."]
+     [:h2 "A great backup & restore system"]
+     [:p "Choose where and when to restore your business data"]
      [:ul.feature-description-list
-      [:li "Respaldos automáticos o manuales."]
-      [:li "Facilidad para trabajar a partir de un respaldo."]]]
+      [:li "Automatic or manual backups."]
+      [:li "Easy to start working from a backup."]]]
     [:div.eight.columns.feature-image
-     (image "/images/sp-backups.png" "Respaldos de la base de datos")]]])
+     (image "/images/sp-backups.png" "Database backups")]]])
 
 (defpartial security-feature []
   [:div.row
    [:div.twelve.columns.product-feature
     [:div.four.columns.feature-description
-     [:h2 "La seguridad necesaria para su negocio."]
-     [:p "Sistema de cuentas de usuario."]
+     [:h2 "Built with security as a main concern."]
+     [:p "User accounts system."]
      [:ul.feature-description-list
-      [:li "Cada uno con sus privilegios necesarios."]
-      [:li "Protección ante intrusos."]]]
+      [:li "Each account customizable with their own rights."]
+      [:li "Protection against unwanted access."]]]
     [:div.eight.columns.feature-image
-     (image "/images/sp-security.png" "Seguridad del sistema")]]])
+     (image "/images/sp-security.png" "System security")]]])
 
 (defpartial platforms-feature []
   [:div.row
    [:div.twelve.columns.product-feature
     [:div.four.columns.feature-description
-     [:h2 "Sistema multiplataforma."]
-     [:p "Funciona en Windows, Mac OS y Linux, con cualquier navegador moderno."]
+     [:h2 "Multiplatform system"]
+     [:p "Works on Windows, Mac OS and Linux, with a modern web browser."]
      [:ul.feature-description-list
-      [:li "El sistema puede estar distribuído o en una sola computadora."]
-      [:li "Cada máquina puede tener un diferente sistema operativo."]
-      [:li "La experiencia es la misma independiente de la plataforma en la que se encuentre."]
-      [:li "¡El sistema también funciona en dispositivos móbiles!"]]]
+      [:li "The system can be distributed or contained completely in a single computer."]
+      [:li "Each computer can have its own operating system, including mobile!"]
+      [:li "The experience is the same for any desktop platform."]
+      [:li "Manage your business from your mobile phone or tablet."]]]
     [:div.eight.columns.feature-image
-     (image "/images/sp-platforms.png" "Sistema multiplataforma")]]])
+     (image "/images/sp-platforms.png" "Multiplatform system")]]])
 
 (defpartial main-section []
   [:section.main
@@ -113,6 +113,6 @@
    (security-feature)
    (platforms-feature)])
 
-(defpage "/punto-venta/" []
+(defpage "/sales-point/" []
   (base-layout {:content (main-section)
-                :active "Empresa"}))
+                :active "Company"}))

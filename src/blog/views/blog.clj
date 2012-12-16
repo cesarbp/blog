@@ -11,13 +11,13 @@
 (defpartial blog-post [content date comments-link]
   [:div.row.post-details-header
    [:div.four.colums.offset-by-eight
-    [:p (str "Fecha: " (t/get-date date) " | Hora: " (t/get-hour date))]]]
+    [:p (str "Date: " (t/get-date date) " | Time: " (t/get-hour date))]]]
   [:div.row.post-content
    (format-post-content content)]
   [:div.row.post-options-footer
    (if (seq comments-link)
      [:div.four.colums.offset-by-eight
-      (link-to comments-link "Discutir esta entrada")])])
+      (link-to comments-link "Discuss this entry")])])
 
 ;;; main section consists of the posts
 (defpartial main-section [posts]
@@ -25,7 +25,7 @@
    [:div.row
     (map blog-post (map :content posts) (map :date posts)
          (map (fn [post]
-                (str "/blog/posts/" (:normalized-title post) "/comentarios/"))
+                (str "/blog/posts/" (:normalized-title post) "/comments/"))
               posts))]])
 
 (defpage "/blog/" []
