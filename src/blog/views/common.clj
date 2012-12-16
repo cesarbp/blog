@@ -23,7 +23,7 @@
    (map res-includes incls)])
 
 (def nav-links [["Company" "/company/"] ["Blog" "/blog/"] ["Contact" "/contact/"]])
-(def nav-links-admin [["Company" "/company/"] ["Blog" "/blog/"] ["Contact" "/contact/"] ["New" "/blog/posts/new/"] ["Admin" "/admin/"] ["Logout" "/logout/"]])
+(def nav-links-admin [["Company" "/company/"] ["Blog" "/blog/"] ["Contact" "/contact/"] ["New" "/blog/posts/new/"] ["Admin" "/admin/"] ["Messages" "/admin/messages/"] ["Logout" "/logout/"]])
 
 (defpartial nav-bar [active nav-links]
   [:nav.top-bar

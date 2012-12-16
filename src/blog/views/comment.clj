@@ -17,7 +17,7 @@
 
 (defpartial comment-controls-admin [id]
   [:div.row.comment-controls
-   (link-to (str "/admin/comments/delete/" id "/") "Delete comment")])
+   (link-to {:class "small alert button"} (str "/admin/comments/delete/" id "/") "Delete comment")])
 
 (defpartial show-comment [id user content date admin]
   [:div.row.comment-section

@@ -19,7 +19,8 @@
     [:div.four.columns.product-description
      [:h3 "Sales Point"]
      [:p "Sales points and admin systems for medium and small businesses."]
-     (link-to "/sales-point/" "> View details")]
+     [:div {:style "text-align:center;"}
+      (link-to {:class "small button"} "/sales-point/" "View details")]]
     [:div.eight.columns
      (image "/images/sp-pitch.png" "Sales point screen")]]])
 

@@ -4,14 +4,15 @@
         hiccup.form
         [hiccup.element :only [mail-to]]
         [blog.views.utils :only [flash-message]])
-  (:require [noir.response :as resp]))
+  (:require [noir.response :as resp]
+            [blog.models.message :as messages]))
 
 (defpartial contact-form []
   [:div.row
    [:h2 "Leave me a message"]
    (form-to [:post "/contact/"]
             (text-field {:placeholder "Your email"} :email)
-            (text-field {:placeholder "Subject"} :title)
+            (text-field {:placeholder "Subject"} :subject)
             [:textarea.email-message {:placeholder "Message" :name :message}]
             (submit-button {:class "button"} "Send message"))])
 
@@ -37,6 +38,16 @@
                  :title "Contact"}]
     (base-layout content)))
 
-(defpage [:post "/contacto/"] []
-  (flash-message "Your message has been received, we will answer it shortly." :standard)
-  (resp/redirect "/empresa/"))
+(defpage [:post "/contact/"] {:keys [email subject message]}
+  (let [result (messages/add-message email subject message)]
+    (if (= result :success)
+      (flash-message "Your message has been received, I will answer it shortly." :standard)
+      (flash-message "There has been an error sending your message. Check that you've no missing fields." :alert))
+    (resp/redirect "/company/")))
+
+
+
+
+
+
+

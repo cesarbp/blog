@@ -17,7 +17,7 @@
   [:div.row.post-options-footer
    (if (seq comments-link)
      [:div.four.colums.offset-by-eight
-      (link-to comments-link "Discuss this entry")])])
+      (link-to {:class "small button"} comments-link "Discuss this entry")])])
 
 ;;; main section consists of the posts
 (defpartial main-section [posts]
