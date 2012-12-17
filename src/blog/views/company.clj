@@ -12,6 +12,14 @@
   [:div.row
    [:hr]])
 
+(def slide-imgs ["slides1.png" "slides2.png" "slides3.png" "slides4.png"])
+
+(defpartial slides []
+  [:div#slides
+   (map (fn [p]
+          (image (str "/images/" p)))
+        slide-imgs)])
+
 (defpartial products-list []
   [:div.row.products-list
    [:h2 "Our products"]
@@ -19,10 +27,17 @@
     [:div.four.columns.product-description
      [:h3 "Sales Point"]
      [:p "Sales points and admin systems for medium and small businesses."]
+     [:p "Features:"]
+     [:ul.feature-description-list
+      [:li "A cashier."]
+      [:li "Management capabilities."]
+      [:li "Works with standard devices."]
+      [:li "Works locally or over the Internet."]
+      [:li "Simple, intuitive and beautiful."]]
      [:div {:style "text-align:center;"}
       (link-to {:class "small button"} "/sales-point/" "View details")]]
-    [:div.eight.columns
-     (image "/images/sp-pitch.png" "Sales point screen")]]])
+    [:div.eight.columns.slides
+     (slides)]]])
 
 (defpartial who-part []
   [:div.row.who-part
@@ -32,11 +47,12 @@
 
 (defpartial main-section []
   [:section.main
-   (header-part)
-   (row-divider)
-   (products-list)
-   (row-divider)
-   (who-part)])
+   [:div.twelve.columns
+    (header-part)
+    (row-divider)
+    (products-list)
+    (row-divider)
+    (who-part)]])
 
 (defpage "/company/" []
   (let [content {:content (main-section)
